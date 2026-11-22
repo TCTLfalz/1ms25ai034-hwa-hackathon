@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream font-sans text-ink antialiased;
+  }
+
+  ::selection {
+    @apply bg-clay/25 text-ink;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8;
+  }
+
+  .section-pad {
+    @apply py-20 sm:py-28;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-clay/25 bg-clay/10 px-3.5 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.16em] text-clay-dark;
+  }
+
+  .eyebrow-dark {
+    @apply inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.16em] text-cream/75;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-bold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clay focus-visible:ring-offset-2 focus-visible:ring-offset-cream disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .btn-primary {
+    @apply bg-clay text-white shadow-[0_12px_28px_-14px_rgba(192,95,60,0.8)] hover:-translate-y-0.5 hover:bg-clay-dark;
+  }
+
+  .btn-secondary {
+    @apply border border-ink/15 bg-white/80 text-ink hover:-translate-y-0.5 hover:border-ink/30 hover:bg-white;
+  }
+
+  .btn-dark {
+    @apply bg-ink text-cream hover:-translate-y-0.5 hover:bg-ink/90;
+  }
+
+  .btn-light {
+    @apply bg-cream text-ink hover:-translate-y-0.5 hover:bg-white;
+  }
+
+  .card-soft {
+    @apply rounded-3xl border border-ink/10 bg-white/70 shadow-card backdrop-blur-sm;
+  }
+
+  .input-base {
+    @apply w-full rounded-xl border border-ink/15 bg-white px-4 py-3 text-sm text-ink shadow-sm transition placeholder:text-muted/60 focus:border-clay focus:outline-none focus:ring-2 focus:ring-clay/20;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.animate-fade-in {
+  animation: fade-in 0.25s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-slide-in,
+  .animate-fade-in {
+    animation: none;
+  }
+}

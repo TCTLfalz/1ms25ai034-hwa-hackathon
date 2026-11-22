@@ -9,3 +9,5 @@ hwa-start.*
 .DS_Store
 dist/
 .vercel
+.next/
+*.tsbuildinfo
