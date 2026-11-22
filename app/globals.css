@@ -105,6 +105,23 @@
   animation: fade-in 0.25s ease;
 }
 
+.reveal-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 360ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-section:not(.is-visible) {
+  will-change: opacity, transform;
+}
+
+.reveal-section.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -113,5 +130,11 @@
   .animate-slide-in,
   .animate-fade-in {
     animation: none;
+  }
+
+  .reveal-section {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }

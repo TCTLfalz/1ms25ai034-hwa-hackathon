@@ -1,5 +1,6 @@
 "use client";
 
+import Image, { type StaticImageData } from "next/image";
 import type { Product } from "@/lib/products";
 import {
   FLAT_SHIPPING,
@@ -7,21 +8,49 @@ import {
   formatMoney,
 } from "@/lib/products";
 import { useCart } from "@/components/cart/CartProvider";
-import ProductVisual from "@/components/shop/ProductVisual";
 import { Check, Plus } from "@/components/ui/Icons";
+import starterKitImage from "@/images/starter-kit.png";
+import proKitImage from "@/images/pro-kit.png";
+import refillPackImage from "@/images/refill-pack.png";
+
+const PRODUCT_MEDIA: Record<
+  string,
+  { image: StaticImageData; alt: string }
+> = {
+  "starter-kit": {
+    image: starterKitImage,
+    alt: "Starter Kit with three white Nosy Paws scent pods and three pastel scent cartridges",
+  },
+  "pro-kit": {
+    image: proKitImage,
+    alt: "Pro Kit with five white Nosy Paws scent pods and six pastel scent cartridges",
+  },
+  "refill-pack": {
+    image: refillPackImage,
+    alt: "Six pastel Nosy Paws scent refill cartridges lined up in a row",
+  },
+};
 
 export default function ProductCard({ product }: { product: Product }) {
   const { addItem } = useCart();
+  const media = PRODUCT_MEDIA[product.id] ?? PRODUCT_MEDIA["starter-kit"];
 
   return (
     <article className="group flex flex-col rounded-[2rem] border border-ink/10 bg-white/80 p-3 shadow-card backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:shadow-soft">
-      <div className="relative overflow-hidden rounded-[1.6rem] bg-gradient-to-br from-sand via-[#F8F1E6] to-oat/60 p-4">
+      <div className="relative aspect-[4/3] overflow-hidden rounded-[1.6rem] bg-gradient-to-br from-sand via-[#F8F1E6] to-oat/60">
         {product.badge && (
           <span className="absolute left-4 top-4 z-10 rounded-full bg-ink px-3 py-1 text-[10px] font-extrabold uppercase tracking-[0.12em] text-cream">
             {product.badge}
           </span>
         )}
-        <ProductVisual product={product} />
+        <Image
+          src={media.image}
+          alt={media.alt}
+          fill
+          placeholder="blur"
+          sizes="(min-width: 1024px) 31vw, (min-width: 640px) 45vw, 92vw"
+          className="object-cover transition duration-500 group-hover:scale-[1.03]"
+        />
       </div>
 
       <div className="flex flex-1 flex-col p-4 sm:p-5">

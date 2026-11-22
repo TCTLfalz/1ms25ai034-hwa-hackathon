@@ -6,18 +6,33 @@ import AppPreview from "@/components/sections/AppPreview";
 import Shop from "@/components/sections/Shop";
 import FAQ from "@/components/sections/FAQ";
 import CTABand from "@/components/sections/CTABand";
+import Reveal from "@/components/ui/Reveal";
 
 export default function HomePage() {
   return (
     <>
       <Hero />
-      <Problem />
-      <HowItWorks />
-      <Features />
-      <AppPreview />
-      <Shop />
-      <FAQ />
-      <CTABand />
+      <Reveal>
+        <Problem />
+      </Reveal>
+      <Reveal>
+        <HowItWorks />
+      </Reveal>
+      <Reveal>
+        <Features />
+      </Reveal>
+      <Reveal>
+        <AppPreview />
+      </Reveal>
+      <Reveal>
+        <Shop />
+      </Reveal>
+      <Reveal>
+        <FAQ />
+      </Reveal>
+      <Reveal>
+        <CTABand />
+      </Reveal>
     </>
   );
 }

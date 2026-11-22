@@ -69,6 +69,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${display.variable} ${sans.variable}`}>
       <body>
+        <noscript>
+          <style>{`.reveal-section{opacity:1;transform:none;}`}</style>
+        </noscript>
         <CartProvider>
           <a
             href="#main"

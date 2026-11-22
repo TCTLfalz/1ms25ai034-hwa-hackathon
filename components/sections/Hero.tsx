@@ -1,7 +1,8 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Check, Gift, Sparkle } from "@/components/ui/Icons";
-import { PawTrail, PodArt } from "@/components/ui/PodArt";
 import { FREE_SHIPPING_THRESHOLD, formatMoney } from "@/lib/products";
+import heroImage from "@/images/hero.png";
 
 export default function Hero() {
   return (
@@ -76,27 +77,15 @@ export default function Hero() {
         </div>
 
         <div className="relative mx-auto w-full max-w-[540px] lg:max-w-none">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-[2.75rem] border border-ink/10 bg-gradient-to-br from-sand via-[#F8F1E6] to-oat/70 shadow-soft">
-            <div
-              aria-hidden="true"
-              className="absolute -right-16 -top-20 h-64 w-64 rounded-full bg-clay/10 blur-2xl"
+          <div className="relative aspect-[4/3] overflow-hidden rounded-[2.75rem] border border-ink/10 bg-sand shadow-soft sm:aspect-[16/10]">
+            <Image
+              src={heroImage}
+              alt="A golden retriever sniffing a Nosy Paws scent pod in a sunlit living room"
+              fill
+              priority
+              sizes="(min-width: 1024px) 46vw, (min-width: 640px) 90vw, 100vw"
+              className="object-cover"
             />
-            <div
-              aria-hidden="true"
-              className="absolute -bottom-20 -left-16 h-64 w-64 rounded-full bg-sage/15 blur-2xl"
-            />
-
-            <PawTrail className="absolute inset-0 h-full w-full" />
-
-            <div className="absolute left-[7%] top-[40%] w-[46%] animate-float-slow motion-reduce:animate-none">
-              <PodArt accent="clay" />
-            </div>
-            <div className="absolute right-[5%] top-[12%] w-[30%] animate-float-slower motion-reduce:animate-none">
-              <PodArt accent="sage" />
-            </div>
-            <div className="absolute bottom-[7%] right-[11%] w-[34%] animate-float-slow motion-reduce:animate-none [animation-delay:1.2s]">
-              <PodArt accent="honey" />
-            </div>
 
             <div className="absolute left-4 top-4 flex items-center gap-2.5 rounded-2xl border border-ink/10 bg-white/90 px-3.5 py-2.5 shadow-card backdrop-blur sm:left-5 sm:top-5">
               <span className="relative flex h-2.5 w-2.5">
@@ -111,7 +100,7 @@ export default function Hero() {
               </div>
             </div>
 
-            <div className="absolute right-4 top-[43%] flex items-center gap-2 rounded-2xl border border-ink/10 bg-white/90 px-3 py-2 shadow-card backdrop-blur sm:right-5">
+            <div className="absolute right-4 top-4 flex items-center gap-2 rounded-2xl border border-ink/10 bg-white/90 px-3 py-2 shadow-card backdrop-blur sm:right-5 sm:top-5">
               <span className="grid h-6 w-6 place-items-center rounded-full bg-sage-light text-sage">
                 <Check className="h-3.5 w-3.5" />
               </span>
@@ -123,7 +112,7 @@ export default function Hero() {
               </div>
             </div>
 
-            <div className="absolute bottom-4 left-4 flex items-center gap-2.5 rounded-2xl border border-ink/10 bg-white/90 px-3.5 py-2.5 shadow-card backdrop-blur sm:bottom-5 sm:left-5">
+            <div className="absolute bottom-4 right-4 flex items-center gap-2.5 rounded-2xl border border-ink/10 bg-white/90 px-3.5 py-2.5 shadow-card backdrop-blur sm:bottom-5 sm:right-5">
               <span className="grid h-8 w-8 place-items-center rounded-full bg-clay/10 text-clay">
                 <Gift className="h-4 w-4" />
               </span>
