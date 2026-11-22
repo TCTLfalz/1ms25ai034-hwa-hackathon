@@ -63,7 +63,7 @@ function PhoneFrame({
             <span className="h-2 w-2 rounded-full bg-ink/60" />
           </span>
         </div>
-        <div className="flex min-h-[428px] flex-col px-4 pb-4 pt-4">
+        <div className="flex min-h-[456px] flex-col px-4 pb-4 pt-4">
           {children}
         </div>
         <TabBar active={active} />
@@ -390,8 +390,8 @@ export default function AppPreview() {
           </p>
         </div>
 
-        <div className="mt-14 grid gap-12 lg:grid-cols-3 lg:gap-6 xl:gap-10">
-          <div className="lg:mt-8">
+        <div className="mt-14 grid gap-12 lg:grid-cols-3 lg:items-start lg:gap-6 xl:gap-10">
+          <div>
             <PhoneFrame active="hunts">
               <ScheduleScreen />
             </PhoneFrame>
@@ -415,7 +415,7 @@ export default function AppPreview() {
             </div>
           </div>
 
-          <div className="lg:mt-14">
+          <div>
             <PhoneFrame active="stats">
               <HistoryScreen />
             </PhoneFrame>
