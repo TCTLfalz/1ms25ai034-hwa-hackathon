@@ -1,11 +1,15 @@
-import { PRODUCTS } from "@/lib/products";
+import {
+  FREE_SHIPPING_THRESHOLD,
+  PRODUCTS,
+  formatMoney,
+} from "@/lib/products";
 import ProductCard from "@/components/shop/ProductCard";
 import { Shield, Sparkle, Truck } from "@/components/ui/Icons";
 
 const REASSURANCE = [
   {
     icon: Truck,
-    title: "Free shipping over $75",
+    title: `Free shipping over ${formatMoney(FREE_SHIPPING_THRESHOLD)}`,
     copy: "Kits ship free, in 1–2 business days.",
   },
   {
@@ -31,7 +35,8 @@ export default function Shop() {
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-muted">
             Every kit includes the app, a USB-C charging dock, and a quick-start
-            guide. Add pods any time as your dog levels up.
+            guide. Add pods any time as your dog levels up. All prices in INR,
+            inclusive of GST.
           </p>
         </div>
 

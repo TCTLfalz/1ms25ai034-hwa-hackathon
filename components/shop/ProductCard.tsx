@@ -1,7 +1,11 @@
 "use client";
 
 import type { Product } from "@/lib/products";
-import { formatMoney } from "@/lib/products";
+import {
+  FLAT_SHIPPING,
+  FREE_SHIPPING_THRESHOLD,
+  formatMoney,
+} from "@/lib/products";
 import { useCart } from "@/components/cart/CartProvider";
 import ProductVisual from "@/components/shop/ProductVisual";
 import { Check, Plus } from "@/components/ui/Icons";
@@ -31,7 +35,7 @@ export default function ProductCard({ product }: { product: Product }) {
             </h3>
           </div>
           <p className="whitespace-nowrap font-display text-2xl font-semibold">
-            ${product.price}
+            {formatMoney(product.price)}
           </p>
         </div>
 
@@ -59,7 +63,9 @@ export default function ProductCard({ product }: { product: Product }) {
         <p className="mt-2 text-center text-[11px] text-muted">
           {product.kind === "kit"
             ? "Free shipping included · Ships in 1–2 business days"
-            : "Ships for $6.95 · Free over $75"}
+            : `Ships for ${formatMoney(FLAT_SHIPPING)} · Free over ${formatMoney(
+                FREE_SHIPPING_THRESHOLD,
+              )}`}
         </p>
       </div>
     </article>

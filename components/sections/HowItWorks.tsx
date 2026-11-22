@@ -40,9 +40,17 @@ export default function HowItWorks() {
   return (
     <section
       id="how-it-works"
-      className="scroll-mt-24 bg-ink text-cream"
+      className="relative scroll-mt-24 overflow-hidden bg-ink text-cream"
     >
-      <div className="container-page section-pad">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-32 top-24 h-80 w-80 rounded-full bg-leaf/10 blur-3xl"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-24 bottom-16 h-96 w-96 rounded-full bg-leaf/10 blur-3xl"
+      />
+      <div className="container-page section-pad relative">
         <div className="mx-auto max-w-2xl text-center">
           <span className="eyebrow-dark">
             <Nose className="h-3.5 w-3.5" />
@@ -63,10 +71,10 @@ export default function HowItWorks() {
               key={n}
               className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] p-6"
             >
-              <span className="pointer-events-none absolute right-5 top-3 font-display text-5xl font-semibold text-white/[0.07]">
+              <span className="pointer-events-none absolute right-5 top-3 font-display text-5xl font-semibold text-leaf/20">
                 {n}
               </span>
-              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-clay/20 text-[#F0A07E]">
+              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-leaf/15 text-leaf">
                 <Icon className="h-6 w-6" />
               </span>
               <h3 className="mt-5 text-xl font-semibold text-cream">{title}</h3>
@@ -77,9 +85,15 @@ export default function HowItWorks() {
           ))}
         </div>
 
-        <div className="mt-6 grid gap-8 rounded-[2rem] border border-white/10 bg-white/[0.04] p-7 sm:p-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-          <div>
-            <span className="eyebrow-dark">Trail Logic</span>
+        <div className="relative mt-6 grid gap-8 overflow-hidden rounded-[2rem] border border-leaf/20 bg-white/[0.04] p-7 sm:p-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-16 -top-20 h-56 w-56 rounded-full bg-leaf/10 blur-3xl"
+          />
+          <div className="relative">
+            <span className="inline-flex items-center gap-2 rounded-full border border-leaf/30 bg-leaf/10 px-3.5 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.16em] text-leaf">
+              Trail Logic
+            </span>
             <h3 className="mt-4 text-3xl font-semibold leading-tight text-cream sm:text-4xl">
               The challenge is the route, not the reward.
             </h3>
@@ -96,7 +110,7 @@ export default function HowItWorks() {
                 "Difficulty adapts as your dog improves",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2.5">
-                  <span className="mt-0.5 grid h-5 w-5 flex-none place-items-center rounded-full bg-sage/20 text-sage">
+                  <span className="mt-0.5 grid h-5 w-5 flex-none place-items-center rounded-full bg-leaf/20 text-leaf">
                     <Check className="h-3 w-3" />
                   </span>
                   {item}
@@ -105,12 +119,13 @@ export default function HowItWorks() {
             </ul>
           </div>
 
-          <div className="rounded-2xl border border-white/10 bg-ink/60 p-5 sm:p-6">
+          <div className="relative rounded-2xl border border-leaf/25 bg-ink/60 p-5 sm:p-6">
             <div className="flex items-center justify-between">
-              <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-cream/45">
+              <p className="flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-[0.18em] text-cream/45">
+                <span className="h-1.5 w-1.5 rounded-full bg-leaf" />
                 Today&apos;s trail
               </p>
-              <span className="rounded-full bg-sage/15 px-2.5 py-1 text-[9px] font-bold uppercase tracking-wide text-sage">
+              <span className="rounded-full bg-leaf/15 px-2.5 py-1 text-[9px] font-bold uppercase tracking-wide text-leaf">
                 4 pods
               </span>
             </div>
@@ -125,14 +140,14 @@ export default function HowItWorks() {
                     <span
                       className={`grid h-10 w-10 place-items-center rounded-full border text-xs font-extrabold ${
                         index < TRAIL.length - 1
-                          ? "border-sage/40 bg-sage/15 text-sage"
+                          ? "border-leaf/60 bg-leaf/15 text-leaf"
                           : "border-clay/50 bg-clay/20 text-[#F0A07E]"
                       }`}
                     >
                       {letter}
                     </span>
                     {index < TRAIL.length - 1 ? (
-                      <Check className="h-3 w-3 text-sage" />
+                      <Check className="h-3 w-3 text-leaf" />
                     ) : (
                       <Gift className="h-3 w-3 text-[#F0A07E]" />
                     )}
@@ -143,12 +158,12 @@ export default function HowItWorks() {
 
             <p className="mt-5 text-[11px] leading-relaxed text-cream/45">
               Correct sequence{" "}
-              <span className="font-bold text-cream/75">&rarr;</span> final pod
+              <span className="font-bold text-leaf">&rarr;</span> final pod
               unlocks the reward.
             </p>
             <div className="mt-4 rounded-xl bg-white/5 px-3 py-2.5 text-[10px] leading-relaxed text-cream/40">
               Next hunt:{" "}
-              <span className="font-bold text-cream/70">D &rarr; A &rarr; C &rarr; B</span>{" "}
+              <span className="font-bold text-leaf">D &rarr; A &rarr; C &rarr; B</span>{" "}
               — never the same route twice.
             </div>
           </div>

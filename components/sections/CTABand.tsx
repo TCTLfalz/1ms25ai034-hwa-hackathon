@@ -1,7 +1,14 @@
 import Link from "next/link";
 import { ArrowRight, Paw } from "@/components/ui/Icons";
+import {
+  FREE_SHIPPING_THRESHOLD,
+  formatMoney,
+  getProduct,
+} from "@/lib/products";
 
 export default function CTABand() {
+  const starterKit = getProduct("starter-kit");
+
   return (
     <section className="relative overflow-hidden bg-clay text-white">
       <Paw
@@ -14,14 +21,14 @@ export default function CTABand() {
       />
       <div className="container-page relative py-16 text-center sm:py-20">
         <p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-white/70">
-          Kits from $149
+          Kits from {formatMoney(starterKit?.price ?? 0)}
         </p>
         <h2 className="mx-auto mt-3 max-w-2xl text-balance text-4xl font-semibold leading-tight sm:text-5xl">
           Give them a trail worth following.
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-white/80">
-          Free shipping over $75, a 30-day happy-nose guarantee, and a brand-new
-          hunt every time the app opens.
+          Free shipping over {formatMoney(FREE_SHIPPING_THRESHOLD)}, a 30-day
+          happy-nose guarantee, and a brand-new hunt every time the app opens.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Link href="/#shop" className="btn btn-light">

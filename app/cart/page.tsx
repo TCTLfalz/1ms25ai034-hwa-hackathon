@@ -165,6 +165,9 @@ export default function CartPage() {
                     <span>Total</span>
                     <span>{formatMoney(total)}</span>
                   </div>
+                  <p className="text-[11px] text-muted">
+                    Inclusive of GST.
+                  </p>
                 </div>
 
                 <Link href="/checkout" className="btn btn-primary mt-5 w-full">
@@ -176,8 +179,9 @@ export default function CartPage() {
                 </p>
               </div>
               <div className="mt-4 rounded-2xl border border-ink/10 bg-sand/40 p-4 text-xs leading-relaxed text-muted">
-                Free shipping over $75 &middot; 30-day happy-nose guarantee
-                &middot; 1-year hardware warranty
+                Free shipping over {formatMoney(FREE_SHIPPING_THRESHOLD)}{" "}
+                &middot; 30-day happy-nose guarantee &middot; 1-year hardware
+                warranty
               </div>
             </aside>
           </div>

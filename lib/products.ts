@@ -18,7 +18,7 @@ export const PRODUCTS: Product[] = [
     id: "starter-kit",
     name: "Starter Kit",
     tagline: "The first trail",
-    price: 149,
+    price: 8999,
     description:
       "Three pods, three scents, and a lifetime of new routes. The easiest way to find out how nose-driven your dog really is.",
     includes: [
@@ -36,7 +36,7 @@ export const PRODUCTS: Product[] = [
     id: "pro-kit",
     name: "Pro Kit",
     tagline: "The whole-home hunt",
-    price: 229,
+    price: 12999,
     badge: "Most popular",
     description:
       "Five pods for longer, more surprising trails through every room. Built for dogs who have mastered the basics.",
@@ -55,7 +55,7 @@ export const PRODUCTS: Product[] = [
     id: "refill-pack",
     name: "Scent Refill Pack",
     tagline: "Keep the trail fresh",
-    price: 24,
+    price: 1299,
     description:
       "Six sealed cartridges across three scents your dog will chase. Swap them in seconds, with no mess and no guesswork.",
     includes: [
@@ -71,8 +71,8 @@ export const PRODUCTS: Product[] = [
   },
 ];
 
-export const FREE_SHIPPING_THRESHOLD = 75;
-export const FLAT_SHIPPING = 6.95;
+export const FREE_SHIPPING_THRESHOLD = 1999;
+export const FLAT_SHIPPING = 99;
 
 export type CartLine = { id: string; qty: number };
 
@@ -107,8 +107,9 @@ export function priceCart(lines: CartLine[]) {
 }
 
 export function formatMoney(amount: number): string {
-  return new Intl.NumberFormat("en-US", {
+  return new Intl.NumberFormat("en-IN", {
     style: "currency",
-    currency: "USD",
+    currency: "INR",
+    maximumFractionDigits: 0,
   }).format(amount);
 }

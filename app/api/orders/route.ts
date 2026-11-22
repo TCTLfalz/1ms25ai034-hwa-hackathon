@@ -79,11 +79,11 @@ export async function GET() {
         lastName: "Rivera",
       },
       shipping: {
-        address1: "123 Maple Street",
-        city: "Portland",
-        state: "OR",
-        zip: "97205",
-        country: "United States",
+        address1: "12, MG Road",
+        city: "Bengaluru",
+        state: "KA",
+        zip: "560001",
+        country: "India",
       },
     },
     products: PRODUCTS.map(({ id, name, price }) => ({ id, name, price })),
@@ -151,7 +151,7 @@ export async function POST(request: Request) {
       city: city || "—",
       state: state || "—",
       zip: zip || "—",
-      country: cleanString(shippingRaw.country, 80) || "United States",
+      country: cleanString(shippingRaw.country, 80) || "India",
     };
   }
 

@@ -5,6 +5,7 @@ import { CartProvider } from "@/components/cart/CartProvider";
 import CartDrawer from "@/components/cart/CartDrawer";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import { FREE_SHIPPING_THRESHOLD, formatMoney } from "@/lib/products";
 
 const display = Fraunces({
   subsets: ["latin"],
@@ -43,7 +44,7 @@ export const metadata: Metadata = {
     url: siteUrl,
     siteName: "Nosy Paws",
     type: "website",
-    locale: "en_US",
+    locale: "en_IN",
   },
   twitter: {
     card: "summary_large_image",
@@ -77,7 +78,8 @@ export default function RootLayout({
           </a>
           <div className="bg-ink text-cream">
             <p className="container-page py-2 text-center text-[11px] font-semibold tracking-wide sm:text-xs">
-              Free shipping over $75 &middot; 30-day happy-nose guarantee
+              Free shipping over {formatMoney(FREE_SHIPPING_THRESHOLD)}{" "}
+              &middot; 30-day happy-nose guarantee
             </p>
           </div>
           <Header />

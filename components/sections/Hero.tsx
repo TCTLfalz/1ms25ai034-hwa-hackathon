@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, Check, Gift, Sparkle } from "@/components/ui/Icons";
 import { PawTrail, PodArt } from "@/components/ui/PodArt";
+import { FREE_SHIPPING_THRESHOLD, formatMoney } from "@/lib/products";
 
 export default function Hero() {
   return (
@@ -61,7 +62,7 @@ export default function Hero() {
           <div className="mt-8 flex flex-wrap gap-x-5 gap-y-2 text-xs font-semibold text-muted">
             <span className="inline-flex items-center gap-1.5">
               <Check className="h-4 w-4 text-sage" />
-              Free shipping over $75
+              Free shipping over {formatMoney(FREE_SHIPPING_THRESHOLD)}
             </span>
             <span className="inline-flex items-center gap-1.5">
               <Check className="h-4 w-4 text-sage" />

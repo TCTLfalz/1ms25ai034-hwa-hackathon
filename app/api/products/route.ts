@@ -21,7 +21,7 @@ export async function GET() {
   return NextResponse.json(
     {
       ok: true,
-      currency: "USD",
+      currency: "INR",
       freeShippingThreshold: FREE_SHIPPING_THRESHOLD,
       flatShipping: FLAT_SHIPPING,
       products: PRODUCTS,

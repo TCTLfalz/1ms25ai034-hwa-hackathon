@@ -6,7 +6,11 @@ import { useRouter } from "next/navigation";
 import { useCart } from "@/components/cart/CartProvider";
 import MiniArt from "@/components/cart/MiniArt";
 import { ArrowRight, Lock, Shield } from "@/components/ui/Icons";
-import { formatMoney, getProduct } from "@/lib/products";
+import {
+  FREE_SHIPPING_THRESHOLD,
+  formatMoney,
+  getProduct,
+} from "@/lib/products";
 import type { Order } from "@/lib/orders";
 
 type FormState = {
@@ -84,8 +88,8 @@ function validate(form: FormState): Record<string, string> {
   if (!form.address1.trim()) next.address1 = "Street address is required.";
   if (!form.city.trim()) next.city = "City is required.";
   if (!form.state.trim()) next.state = "State is required.";
-  if (!/^\d{5}(-\d{4})?$/.test(form.zip.trim())) {
-    next.zip = "Enter a valid ZIP code.";
+  if (!/^\d{6}$/.test(form.zip.trim())) {
+    next.zip = "Enter a valid 6-digit PIN code.";
   }
   if (!form.cardName.trim()) next.cardName = "Name on card is required.";
 
@@ -188,7 +192,7 @@ export default function CheckoutPage() {
             city: form.city.trim(),
             state: form.state.trim(),
             zip: form.zip.trim(),
-            country: "United States",
+            country: "India",
           },
           payment: { last4: digits.slice(-4) },
         }),
@@ -364,7 +368,7 @@ export default function CheckoutPage() {
                     id="address1"
                     name="address1"
                     autoComplete="address-line1"
-                    placeholder="123 Maple Street"
+                    placeholder="12, MG Road"
                     value={form.address1}
                     onChange={(event) =>
                       update("address1", event.target.value)
@@ -409,7 +413,7 @@ export default function CheckoutPage() {
                     id="state"
                     name="state"
                     autoComplete="address-level1"
-                    placeholder="CA"
+                    placeholder="KA"
                     value={form.state}
                     onChange={(event) => update("state", event.target.value)}
                     className={inputClass("state")}
@@ -417,13 +421,13 @@ export default function CheckoutPage() {
                     aria-describedby={errors.state ? "state-error" : undefined}
                   />
                 </Field>
-                <Field label="ZIP code" htmlFor="zip" error={errors.zip}>
+                <Field label="PIN code" htmlFor="zip" error={errors.zip}>
                   <input
                     id="zip"
                     name="zip"
                     autoComplete="postal-code"
                     inputMode="numeric"
-                    placeholder="90210"
+                    placeholder="560001"
                     value={form.zip}
                     onChange={(event) => update("zip", event.target.value)}
                     className={inputClass("zip")}
@@ -435,14 +439,15 @@ export default function CheckoutPage() {
                   <input
                     id="country"
                     name="country"
-                    value="United States"
+                    value="India"
                     readOnly
                     className="input-base bg-sand/40 text-muted"
                   />
                 </Field>
               </div>
               <p className="mt-4 text-[11px] leading-relaxed text-muted">
-                Standard shipping: 3–5 business days. Orders over $75 ship free.
+                Standard shipping: 3–5 business days. Orders over{" "}
+                {formatMoney(FREE_SHIPPING_THRESHOLD)} ship free.
               </p>
             </section>
 
@@ -649,6 +654,7 @@ export default function CheckoutPage() {
                   <span>Total</span>
                   <span>{formatMoney(total)}</span>
                 </div>
+                <p className="text-[11px] text-muted">Inclusive of GST.</p>
               </div>
 
               <p className="mt-4 flex items-start gap-2 rounded-xl bg-sand/60 p-3 text-[11px] leading-relaxed text-muted">

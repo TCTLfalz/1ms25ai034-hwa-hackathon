@@ -18,6 +18,7 @@ const config: Config = {
         muted: "#6E6156",
         sage: "#7C8A6D",
         "sage-light": "#E9EDE3",
+        leaf: "#A9DB6F",
         honey: "#D9A441",
       },
       fontFamily: {
